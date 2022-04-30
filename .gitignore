@@ -167,3 +167,8 @@ dist
 *.vsix
 
 
+
+
+# Added by cargo
+
+/target
