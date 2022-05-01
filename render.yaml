@@ -37,3 +37,4 @@ databases:
     databaseName: elephan
     user: elemendan
     ipAllowList: []
+    postgresMajorVersion: 14
