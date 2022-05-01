@@ -1,0 +1,8 @@
+compose.yaml
+node_modules
+target
+Dockerfile
+.dockerignore
+.git
+.github
+.gitignore
