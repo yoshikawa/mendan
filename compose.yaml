@@ -1,6 +1,6 @@
 services:
   rust:
-    image: rust:latest
+    image: rust:1.60
     working_dir: /app
     volumes:
       - ./:/app
@@ -9,7 +9,7 @@ services:
       - 8080:8080
     depends_on:
       db:
-        condition: service_healthy
+        condition: service_started
       redis:
         condition: service_started
   db:
