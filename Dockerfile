@@ -9,26 +9,18 @@ ADD ./front .
 RUN yarn build
 
 # Actix-web build image
-FROM rust:1.60 AS server_builder
+FROM ekidd/rust-musl-builder:stable as server_builder
 
-RUN apt-get update && apt-get install musl-tools -y
-RUN rustup target add x86_64-unknown-linux-musl
-
-WORKDIR /server
-RUN USER=root cargo new mendan
-WORKDIR /server/mendan
-COPY ./server/Cargo.toml ./server/Cargo.lock ./
-RUN cargo build --release
+WORKDIR /home/rust
 COPY ./server .
-RUN rm ./target/release/deps/mendan*
-RUN RUSTFLAGS=-Clinker=musl-gcc cargo build --release --target=x86_64-unknown-linux-musl
+RUN cargo build --release
 
-# FROM alpine:3.15 AS deploy
+FROM alpine:3.15 AS deploy
 
 # Actix web's expose port
-# EXPOSE 8080
-# RUN apk --no-cache add postgresql-client
-# WORKDIR /app
-# COPY --from=client_builder /client/build ./build
-# COPY --from=server_builder /server/mendan/target/x86_64-unknown-linux-musl/release/mendan ./
-# CMD [ "./mendan" ]
+EXPOSE 8080
+RUN apk --no-cache add postgresql-client
+WORKDIR /app
+COPY --from=client_builder /client/build ./build
+COPY --from=server_builder /home/rust/target/x86_64-unknown-linux-musl/release/mendan ./
+CMD [ "./mendan" ]
