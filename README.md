@@ -19,6 +19,7 @@
 | Rust           |   1.60.0 |
 | Node.js        |   18.0.0 |
 | PostgreSQL     |     14.2 |
+| Redis          |      6.2 |
 | Docker         | 20.10.14 |
 | docker-compose |    2.4.1 |
 

@@ -3,7 +3,7 @@ services:
     image: rust:1.60
     working_dir: /app
     volumes:
-      - ./:/app
+      - ./server:/app
     tty: true
     ports:
       - 8080:8080
