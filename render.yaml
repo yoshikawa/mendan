@@ -1,0 +1,39 @@
+services:
+  # Docker web service
+  - type: web
+    name: mendan
+    env: docker
+    repo: https://github.com/yoshikawa/mendan.git
+    region: singapore # Tokyo
+    plan: free
+    branch: main
+    numInstances: 1
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: elephan
+          property: connectionString
+      - key: REDIS_HOST
+        fromService:
+          type: redis
+          name: redidan
+          property: host
+      - key: REDIS_PORT
+        fromService:
+          type: redis
+          name: redidan
+          property: port
+  - type: redis
+    name: redidan
+    region: singapore # Tokyo
+    plan: free
+    ipAllowList: []
+    maxmemoryPolicy: allkeys-lru
+
+databases:
+  - name: elephan
+    region: singapore # Tokyo
+    plan: free
+    databaseName: elephan
+    user: elemendan
+    ipAllowList: []
