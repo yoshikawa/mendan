@@ -1,0 +1,74 @@
+name: Code Coverage
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Cache cargo
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            core/target/
+            plugins/target/
+            src-tauri/target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Frontend - install dependencies
+        working-directory: front
+        run: npm install
+
+      - name: App - Run the tests
+        working-directory: front
+        run: npm run-script test:coverage
+
+      - name: Install stable toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+          components: rustfmt, clippy
+
+      - name: Backend - install dependencies
+        working-directory: server
+        run: cargo install cargo-tarpaulin
+
+      - name: Backend - Run the tests
+        working-directory: server
+        run: cargo tarpaulin
+
+      - name: Upload frontend coverage to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          files: ./front/coverage/coverage-final.json
+          flags: frontend
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload backend coverage to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          files: ./server/tarpaulin.json
+          flags: backend
+          token: ${{ secrets.CODECOV_TOKEN }}
