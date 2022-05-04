@@ -171,3 +171,4 @@ dist
 /target
 
 coverage
+tarpaulin-report.json
