@@ -12,6 +12,10 @@ services:
         condition: service_started
       redis:
         condition: service_started
+    environment:
+      DATABASE_URL: postgres://mendan:password@db/mendan
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
   db:
     image: postgres:14.2
     restart: always
