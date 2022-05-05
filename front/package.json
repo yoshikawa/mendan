@@ -21,7 +21,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "npm test -- --coverage",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "post-build": "mv build ../server/build",
+    "local-deploy": "npm run build && npm run post-build"
   },
   "eslintConfig": {
     "extends": [
