@@ -1,6 +1,10 @@
 # mendan
 
-よしかわ　と面談するためのウェブサービス
+![meeting-image](.github/assets/b0311.png)
+
+[![Code Coverage](https://github.com/yoshikawa/mendan/actions/workflows/coverage.yml/badge.svg?branch=main)](https://github.com/yoshikawa/mendan/actions/workflows/coverage.yml) [![codecov](https://codecov.io/gh/yoshikawa/mendan/branch/main/graph/badge.svg?token=FQFOQ2QQ6Q)](https://codecov.io/gh/yoshikawa/mendan) ![GitHub](https://img.shields.io/github/license/yoshikawa/mendan)
+
+[よしかわたいき](https://github.com/yoshikawa) と面談するためのウェブサービス
 
 ## 詳細
 
@@ -49,6 +53,12 @@ make front
 make docker/down ## Dockerコンテナを全てシャットダウン
 docker system prune --all
 ```
+
+## デプロイ
+
+下のボタンをタップすると Render 上に `mendan` がデプロイされます
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
 
 ## コントリビュート
 
