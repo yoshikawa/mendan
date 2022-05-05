@@ -1,6 +1,6 @@
 # mendan
 
-![meeting-image](.github/assets/b0311.png)
+![meeting-image](.github/assets/remote_meeting.png)
 
 [![Code Coverage](https://github.com/yoshikawa/mendan/actions/workflows/coverage.yml/badge.svg?branch=main)](https://github.com/yoshikawa/mendan/actions/workflows/coverage.yml) [![codecov](https://codecov.io/gh/yoshikawa/mendan/branch/main/graph/badge.svg?token=FQFOQ2QQ6Q)](https://codecov.io/gh/yoshikawa/mendan) ![GitHub](https://img.shields.io/github/license/yoshikawa/mendan)
 
