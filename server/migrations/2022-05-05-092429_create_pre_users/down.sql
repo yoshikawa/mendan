@@ -1,3 +1,3 @@
 -- This file should undo anything in `up.sql`
-DROP UNIQUE INDEX pre_users_token_idx ON pre_users (token);
+DROP INDEX pre_users_token_idx;
 DROP TABLE pre_users;

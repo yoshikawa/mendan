@@ -14,6 +14,8 @@ table! {
         user_id -> Int4,
         start_time -> Timestamp,
         end_time -> Timestamp,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
     }
 }
 
@@ -24,6 +26,7 @@ table! {
         last_name -> Varchar,
         email -> Varchar,
         password -> Varchar,
+        salt -> Varchar,
         enabled -> Bool,
         created_at -> Timestamp,
         updated_at -> Timestamp,
