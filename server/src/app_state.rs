@@ -9,10 +9,8 @@ pub struct AppState {
 
 impl AppState {
     pub async fn init() -> Self {
-        let result = Self {
+        Self {
             db: db::create_db_connection_pool().await,
-        };
-
-        return result;
+        }
     }
 }
