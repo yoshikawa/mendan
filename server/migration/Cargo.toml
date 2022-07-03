@@ -9,6 +9,7 @@ name = "migration"
 path = "src/lib.rs"
 
 [dependencies]
+sea-orm = { version = "0.8.0", features = [ "sqlx-postgres", "runtime-actix-native-tls", "macros" ] }
 entity = { path = "../entity" }
 
 [dependencies.sea-orm-migration]
