@@ -12,5 +12,9 @@ path = "src/lib.rs"
 sea-orm = { version = "0.8.0", features = [ "sqlx-postgres", "runtime-actix-native-tls", "macros" ] }
 entity = { path = "../entity" }
 
+[dependencies.async-std]
+version = "1.7.0"
+features = ["attributes"]
+
 [dependencies.sea-orm-migration]
 version = "^0.8.0"
