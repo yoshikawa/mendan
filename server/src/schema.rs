@@ -35,8 +35,4 @@ table! {
 
 joinable!(reservations -> users (user_id));
 
-allow_tables_to_appear_in_same_query!(
-    pre_users,
-    reservations,
-    users,
-);
+allow_tables_to_appear_in_same_query!(pre_users, reservations, users,);
