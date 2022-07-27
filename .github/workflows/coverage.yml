@@ -51,6 +51,7 @@ jobs:
 
       - name: Backend - install dependencies
         working-directory: server
+        continue-on-error: true
         run: cargo install cargo-tarpaulin
 
       - name: Backend - Run the tests

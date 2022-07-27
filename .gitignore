@@ -170,5 +170,6 @@ dist
 
 /target
 
+build
 coverage
 tarpaulin-report.json
