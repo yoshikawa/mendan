@@ -1,6 +1,6 @@
 services:
   rust:
-    image: rust:1.60
+    image: rust:1.62
     working_dir: /app
     volumes:
       - ./server:/app
