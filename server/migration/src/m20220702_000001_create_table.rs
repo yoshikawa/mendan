@@ -56,7 +56,11 @@ impl MigrationTrait for Migration {
                             .timestamp_with_time_zone()
                             .extra("DEFAULT CURRENT_TIMESTAMP".to_owned()),
                     )
-                    .col(ColumnDef::new(user::Column::UpdatedAt).timestamp_with_time_zone())
+                    .col(
+                        ColumnDef::new(user::Column::UpdatedAt)
+                            .timestamp_with_time_zone()
+                            .extra("DEFAULT CURRENT_TIMESTAMP".to_owned()),
+                    )
                     .to_owned(),
             )
             .await;
